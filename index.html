@@ -23,6 +23,24 @@
     </div>
 
     <div class="card">
+  <h2>🛒 Groceries</h2>
+
+  <input id="item-name" placeholder="Item name">
+  <input id="item-amount" type="number" placeholder="Amount ($)">
+  
+  <select id="paid-by">
+    <option value="">Who paid?</option>
+    <option>Hannah</option>
+    <option>You</option>
+    <option>Friend 1</option>
+  </select>
+
+  <button onclick="addGrocery()">Add Item</button>
+
+  <ul id="grocery-list"></ul>
+</div>
+    
+    <div class="card">
       <h2>📋 House Rules</h2>
       <ul>
         <li>No screaming after 10pm</li>
@@ -32,5 +50,6 @@
       </ul>
     </div>
   </div>
+    <script src="script.js"></script>
 </body>
 </html>
