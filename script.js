@@ -21,9 +21,16 @@ function renderGroceries() {
   const list = document.getElementById("grocery-list");
   list.innerHTML = "";
 
-  groceryList.forEach(item => {
+  groceryList.forEach((item, index) => {
     const li = document.createElement("li");
-    li.textContent = `${item.name} - $${item.amount.toFixed(2)} (Paid by ${item.paidBy})`;
+    li.innerHTML = `
+      ${item.name} - $${item.amount.toFixed(2)} (Paid by ${item.paidBy})
+      <button onclick="deleteGrocery(${index})">❌</button>
+    `;
     list.appendChild(li);
   });
+}
+function deleteGrocery(index) {
+  groceryList.splice(index, 1);
+  renderGroceries();
 }
