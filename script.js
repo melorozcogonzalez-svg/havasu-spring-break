@@ -34,3 +34,10 @@ function deleteGrocery(index) {
   groceryList.splice(index, 1);
   renderGroceries();
 }
+document.addEventListener("change", function (e) {
+  if (e.target.type === "checkbox") {
+    const li = e.target.parentElement;
+    li.style.textDecoration = e.target.checked ? "line-through" : "none";
+    li.style.opacity = e.target.checked ? "0.6" : "1";
+  }
+});
