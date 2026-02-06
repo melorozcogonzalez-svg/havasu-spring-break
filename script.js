@@ -34,20 +34,21 @@ function deleteGrocery(index) {
   groceryList.splice(index, 1);
   renderGroceries();
   }
-document.querySelectorAll("#payment-list input").forEach(box => {
-  const name = box.dataset.name;
-  const saved = localStorage.getItem("paid_" + name);
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("#payment-list input").forEach(box => {
+    const name = box.dataset.name;
+    const saved = localStorage.getItem("paid_" + name);
 
-  if (saved === "true") {
-    box.checked = true;
-    box.parentElement.style.textDecoration = "line-through";
-    box.parentElement.style.opacity = "0.6";
-  }
+    if (saved === "true") {
+      box.checked = true;
+      box.parentElement.style.textDecoration = "line-through";
+      box.parentElement.style.opacity = "0.6";
+    }
 
-  box.addEventListener("change", () => {
-    localStorage.setItem("paid_" + name, box.checked);
-
-    box.parentElement.style.textDecoration = box.checked ? "line-through" : "none";
-    box.parentElement.style.opacity = box.checked ? "0.6" : "1";
+    box.addEventListener("change", () => {
+      localStorage.setItem("paid_" + name, box.checked);
+      box.parentElement.style.textDecoration = box.checked ? "line-through" : "none";
+      box.parentElement.style.opacity = box.checked ? "0.6" : "1";
+    });
   });
 });
