@@ -33,11 +33,21 @@ function renderGroceries() {
 function deleteGrocery(index) {
   groceryList.splice(index, 1);
   renderGroceries();
-}
-document.addEventListener("change", function (e) {
-  if (e.target.type === "checkbox") {
-    const li = e.target.parentElement;
-    li.style.textDecoration = e.target.checked ? "line-through" : "none";
-    li.style.opacity = e.target.checked ? "0.6" : "1";
   }
+document.querySelectorAll("#payment-list input").forEach(box => {
+  const name = box.dataset.name;
+  const saved = localStorage.getItem("paid_" + name);
+
+  if (saved === "true") {
+    box.checked = true;
+    box.parentElement.style.textDecoration = "line-through";
+    box.parentElement.style.opacity = "0.6";
+  }
+
+  box.addEventListener("change", () => {
+    localStorage.setItem("paid_" + name, box.checked);
+
+    box.parentElement.style.textDecoration = box.checked ? "line-through" : "none";
+    box.parentElement.style.opacity = box.checked ? "0.6" : "1";
+  });
 });
